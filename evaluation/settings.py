@@ -31,7 +31,10 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_swagger',
     'corsheaders',
+
+    # custom apps
     "authy.apps.AuthyConfig",
+    "survey.apps.SurveyConfig",
 ]
 
 MIDDLEWARE = [

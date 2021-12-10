@@ -22,9 +22,6 @@ class LoginViewSet(viewsets.ViewSet):
             data = {"token": token.key,
                     "id": user.id, 'email': user.email}
 
-            
-
-            # utils.createAction(user, "logged in")
             return Response(data)
 
         return Response(["Wrong email/password."], status=status.HTTP_401_UNAUTHORIZED)
