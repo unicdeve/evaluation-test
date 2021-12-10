@@ -19,8 +19,8 @@ class SurveyQuestion(models.Model):
         ('attractiveness_question', 'attractiveness question'),
         ('understanability_question', 'understanability question'),
     )
-
-  user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='survey_questions')
+  survey = models.ForeignKey(Survey, on_delete=models.CASCADE, related_name='questions')
+  user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='user_surveys')
   question = models.CharField(max_length=150)
   question_type = models.CharField(max_length=150, choices=QUESTION_TYPE_CHOICES)
   question_number = models.IntegerField()
