@@ -1,0 +1,5 @@
+<h3 class="text-muted">{{ sender_name }} Just contacted us.</h3>
+
+<h4 class='text-muted'>Subject: {{subject}}</h4>
+<h4 class='text-muted'>Message:</h4>
+<p class='message-preview'>{{ message }}</p>

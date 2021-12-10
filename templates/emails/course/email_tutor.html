@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>StemTutor</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <div class="container">
+    <h3 class="text-muted">Hi, congratulations, someone just ordered your <b>{{ course_title }}</b> course!</h3>
+
+    <p>Here's the details about the order:</p>
+
+    <p>Full name: {{ name }}</p>
+    <p>Address: {{ street_address }}, {{ local_govt }}, {{ state }}</p>
+    <p>Nearest bus stop: {{ nearest_bus }}</p>
+
+    <br>
+    <br>
+
+    <p>No. of Persons: {{ no_of_persons }}</p>
+    <p>Current Proficieny: {{ current_proficiency }}</p>
+    <p>Proficency goal: {{ proficiency_goal }}</p>
+    <p>No. of days: {{ no_of_days }}</p>
+    <p>Days: {{ days }}</p>
+    <p>No. of hours per day: {{ hours_per_day }} hours</p>
+    <p>Start time: {{ start_time }}</p>
+    <p>Start month: {{ start_month }}</p>
+    <p>Calculated course duration: {{ how_long }} weeks</p>
+    <p>Total amount: ₦{{ amount }}</p>
+  </div>
+</body>
+
+</html>

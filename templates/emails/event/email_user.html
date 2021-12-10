@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>StemTutor</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <div class="container">
+    {% if reminder %}
+    <h3 class="text-muted">Greetings {{ name }}, thanks for applying for the {{ event_name }}.</h3>
+    <p>{{ reminder }}</p>
+    {% else %}
+    <h3 class="text-muted">Hello {{ name }}, thanks for applying for the {{ event_name }}.</h3>
+    {% endif %}
+
+    <p>Here's the link to the <a href='https://us02web.zoom.us/j/84772546773?pwd=UElPeHdrR252M0ZjaGhpUW5Lb2Z0Zz09'
+        target='_blank'>zoom venue</a>.</p>
+    <p>Meeting ID: 847 7254 6773</p>
+    <p>Password: 121111</p>
+
+    <a target='_blank'
+      href="https://calendar.google.com/calendar/r/eventedit?text=STEM%20Masterclass&details=Free%20STEM%20masterclass%20&location=https://us02web.zoom.us/j/84772546773?pwd=UElPeHdrR252M0ZjaGhpUW5Lb2Z0Zz09&dates=20200718T130000Z/20200718T150000Z&ctz=Africa/Lagos">Add
+      to Calendar</a>
+
+    {% if special_offer %}
+    <h4 class="text-muted">Special Offer</h4>
+    <p>{{ special_offer }}</p>
+    {% endif %}
+  </div>
+</body>
+
+</html>
