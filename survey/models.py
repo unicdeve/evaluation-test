@@ -8,6 +8,9 @@ class Survey(models.Model):
   user = models.ForeignKey(UserModel, on_delete=models.SET_NULL, null=True, blank=True, related_name='surveys')
   title = models.CharField(max_length=50, unique=True)
 
+  def __str__(self):
+        return self.title
+
 
 class SurveyQuestion(models.Model):
   QUESTION_TYPE_CHOICES = (
@@ -22,6 +25,9 @@ class SurveyQuestion(models.Model):
   question_type = models.CharField(max_length=150, choices=QUESTION_TYPE_CHOICES)
   question_number = models.IntegerField()
 
+  def __str__(self):
+        return f'{self.question_number}. {self.question}'
+
   class Meta:
     unique_together = [['question_number', 'question']]
     order_with_respect_to = 'question_number'
@@ -33,6 +39,9 @@ class Answer(models.Model):
   user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='user_answers')
   value = models.FloatField(max_length=10)
 
+
+  def __str__(self):
+        return f'{self.question.question} answered by {self.user.email} = {self.value}'
 
   class Meta:
     order_with_respect_to = 'question'
