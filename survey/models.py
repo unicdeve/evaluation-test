@@ -30,7 +30,7 @@ class SurveyQuestion(models.Model):
 
   class Meta:
     unique_together = [['question_number', 'question']]
-    order_with_respect_to = 'question_number'
+    ordering = ['question_number']
 
 
 class Answer(models.Model):
