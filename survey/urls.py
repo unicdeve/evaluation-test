@@ -1,9 +1,14 @@
+from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from .views import SurveyQuestionViewSet
+from .views import SurveyEvauluation, SurveyQuestionViewSet
 
 router = DefaultRouter()
 router.register('', SurveyQuestionViewSet)
 
+urlpatterns = [
+    path('evaluation/', SurveyEvauluation.as_view(), name='survey-evaluation'),
+]
 
-urlpatterns = router.urls
+
+urlpatterns += router.urls

@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 
-
 UserModel = get_user_model()
 
 
@@ -11,7 +10,7 @@ class EmailBackend(object):
          email = kwargs["email" if "email" in kwargs else "username"]
          password = kwargs["password"]
 
-         user = UserModel.objects.get(Q(email=email) | Q(username=email))
+         user = UserModel.objects.get(Q(email=email))
 
          if user.check_password(password):
             return user
