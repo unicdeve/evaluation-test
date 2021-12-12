@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "9b3cd62b-d8e3-487b-abf5-4b153f288b00",
+		"name": "Neema's proj",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Submit survey: evaluation",
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 08eeb03f8dc574e9957deddbdba80cbd3b56fbb7",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"question\": 1,\n        \"answer\": 0.4\n    },\n    {\n        \"question\": 2,\n        \"answer\": 0.6\n    },\n    {\n        \"question\": 3,\n        \"answer\": 1\n    },\n    {\n        \"question\": 4,\n        \"answer\": 0.8\n    },\n    {\n        \"question\": 5,\n        \"answer\": 0.8\n    },\n    {\n        \"question\": 6,\n        \"answer\": 0.4\n    },\n    {\n        \"question\": 7,\n        \"answer\": 1\n    },\n    {\n        \"question\": 8,\n        \"answer\": 0.2\n    },\n    {\n        \"question\": 9,\n        \"answer\": 1\n    },\n    {\n        \"question\": 10,\n        \"answer\": 0.6\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/surveys/evaluation/?survey_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"surveys",
+						"evaluation",
+						""
+					],
+					"query": [
+						{
+							"key": "survey_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get survey questions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 08eeb03f8dc574e9957deddbdba80cbd3b56fbb7",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/surveys/questions/?survey_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"surveys",
+						"questions",
+						""
+					],
+					"query": [
+						{
+							"key": "survey_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"password\",\n    \"email\": \"unic@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwQ0I4M293T2pidWR1alNZZDRvZiJ9.eyJpc3MiOiJodHRwczovL2Rldi04YWQ4b2xnZy51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDkyMDczNjY3NzQ5NTg5NjY1NjciLCJhdWQiOiJTMVpZNmY2QXRSajM0RjNRUHdlSUZBNGI4R3B1THJ2YyIsImlhdCI6MTYzNjM5ODQ1NSwiZXhwIjo2MjM2Mzk4NTUyLCJhdF9oYXNoIjoiN0FpdWN4SFE0MFlCT0ZxSXhSR3YzZyIsIm5vbmNlIjoiRVFOUVFsflBDWGtEVDNlLWdVUGhDTTdEaFR5Q25SckwifQ.L2bspK_4m9xXf5YEokTCd0Dh_MbRLIHw7W4kQkmDedf-gQaQ2RW-jaOgfLQUGT42ceiOc9vDb2hHoRgAXgpc3OAJXEskkLG5VIQe3sZRrfKGOOXA6hGFrOzPhOQYieYApukZweIRrRhpUn0Qkpe28jcRdE0TlmdaiLOWChmxYJBSDNBRwXDvmMpnsW9F_NLwXXPLJ5igWd1jS6J8eZqGOtJq2sHR7EHeQB2P2kOMpiT6Wl0072t26S5LHpjeQLXs_dlfSRDT6lbuiOfigvu8fVf5EK3jwjzQB-uRp8F12IQSL8LQtq5jMDL0PIpmxSh0d0u7QO9_QdCE1AFjonQTKQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"confirm_password\": \"password\",\n    \"password\": \"password\",\n    \"email\": \"unic@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
