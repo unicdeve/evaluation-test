@@ -47,3 +47,13 @@ class Answer(models.Model):
     order_with_respect_to = 'question'
 
 
+class Evaluation(models.Model):
+  user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='user_evaluations')
+  survey = models.ForeignKey(Survey, on_delete=models.CASCADE, related_name='evaluations')
+  accessibility = models.FloatField(max_length=10)
+  navigation = models.FloatField(max_length=10)
+  attractiveness = models.FloatField(max_length=10)
+  understanability = models.FloatField(max_length=10)
+
+  def __str__(self):
+        return f'{self.survey.title}: {self.user.email}'
