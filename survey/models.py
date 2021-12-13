@@ -48,7 +48,6 @@ class Answer(models.Model):
 
 
 class Evaluation(models.Model):
-  user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='user_evaluations')
   survey = models.ForeignKey(Survey, on_delete=models.CASCADE, related_name='evaluations')
   accessibility = models.FloatField(max_length=10)
   navigation = models.FloatField(max_length=10)
@@ -56,4 +55,4 @@ class Evaluation(models.Model):
   understanability = models.FloatField(max_length=10)
 
   def __str__(self):
-        return f'{self.survey.title}: {self.user.email}'
+        return f'{self.survey.title}: A - {self.accessibility}, N - {self.navigation}, Attr - {self.attractiveness}, U - {self.understanability}'

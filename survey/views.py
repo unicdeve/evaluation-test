@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from rest_framework import status, viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -10,7 +10,7 @@ from .serializers import SurveyEvaluationSerializer, SurveyQuestionSerializer
 
 
 class SurveyQuestionViewSet(viewsets.ViewSet):
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (AllowAny, )
     queryset = SurveyQuestion.objects.all()
     serializer_class = SurveyQuestionSerializer
 
@@ -22,6 +22,7 @@ class SurveyQuestionViewSet(viewsets.ViewSet):
 
 
 class SurveyEvauluation(APIView):
+    permission_classes = (AllowAny, )
     def post(self, request, *args, **kwargs):
         '''
             You should pass an array of answer objects
@@ -77,7 +78,6 @@ class SurveyEvauluation(APIView):
             navigation=navigation, 
             attractiveness=attractiveness,
             understanability=understanability,
-            user=request.user,
             survey=survey,
         )
 
