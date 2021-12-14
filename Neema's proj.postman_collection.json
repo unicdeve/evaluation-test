@@ -166,6 +166,43 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "evaluation report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 08eeb03f8dc574e9957deddbdba80cbd3b56fbb7",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/surveys/evaluation/report/?survey_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"surveys",
+						"evaluation",
+						"report",
+						""
+					],
+					"query": [
+						{
+							"key": "survey_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
