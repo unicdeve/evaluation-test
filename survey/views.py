@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from rest_framework import status, viewsets
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -84,5 +84,39 @@ class SurveyEvauluation(APIView):
         evaluation_qs = SurveyEvaluationSerializer(evaluation, many=False)
 
         return Response(evaluation_qs.data, status=status.HTTP_200_OK)
+
+
+class SurveyEvauluationReport(APIView):
+    permission_classes = (IsAuthenticated, )
+    def get(self, request, *args, **kwargs):
+        survey_id = request.query_params.get('survey_id', None)
+
+        if survey_id is None:
+            return Response({ "message": "You must pass the survey_id as a query parameter"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # find survey
+        survey = get_object_or_404(Survey, pk=survey_id)
+
+        if survey.id != request.user.id:
+            return Response({ "message": "You can not check report of surveys created by other users."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # find survey evaluations
+        survey_evaluations = Evaluation.objects.filter(survey=survey.id)
+        total_evaluations = len(survey_evaluations)
+        # Final calculations for each category
+        accessibility = sum(evaluation.accessibility for evaluation in survey_evaluations) / total_evaluations
+        navigation = sum(evaluation.navigation for evaluation in survey_evaluations) / total_evaluations
+        attractiveness = sum(evaluation.attractiveness for evaluation in survey_evaluations) / total_evaluations
+        understanability = sum(evaluation.understanability for evaluation in survey_evaluations) / total_evaluations
+        
+        response_data = {
+            "accessibility": accessibility,
+            "navigation": navigation,
+            "attractiveness": attractiveness,
+            "understanability": understanability,
+        }
+        
+
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
